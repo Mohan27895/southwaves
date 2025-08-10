@@ -57,12 +57,16 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
+        .section-bg {
+            background-color: var(--accent-color-light);
+        }
+
         section.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: var(--heading-font);
             color: var(--heading-color);
             margin-bottom: 1.2rem;
@@ -72,6 +76,14 @@
         h1 { font-size: 3.5rem; font-weight: 700; }
         h2 { font-size: 2.8rem; font-weight: 600; text-align: center; }
         h3 { font-size: 1.8rem; font-weight: 600; }
+        .subsection-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 3.5rem;
+            margin-bottom: 2.5rem;
+        }
+
         h4 { font-size: 1.2rem; font-weight: 500; }
         
         p { margin-bottom: 1.5rem; max-width: 75ch; }
@@ -91,8 +103,16 @@
             text-decoration: none;
             transition: all var(--transition-speed) ease;
             box-shadow: 0 4px 15px rgba(26, 147, 111, 0.2);
+            border: none;
+            cursor: pointer;
         }
         .btn:hover { background: #157359; transform: translateY(-3px); box-shadow: 0 7px 20px rgba(26, 147, 111, 0.3); }
+        .btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
 
         /* --- Header & Navigation --- */
         .navbar {
@@ -170,30 +190,53 @@
         .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.08); }
         .service-card i { font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1.5rem; }
 
-        /* --- Accordion for Other Services --- */
-        .accordion-item {
-            border: 1px solid var(--accent-color-dark);
-            border-radius: 8px; margin-bottom: 1rem;
+        /* --- Other Services (Static) Section --- */
+        .capabilities-overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3.5rem;
         }
-        .accordion-header {
-            width: 100%; padding: 1.5rem; background: var(--white-color);
-            display: flex; justify-content: space-between; align-items: center;
-            cursor: pointer; border: none; font-size: 1.1rem;
-            font-family: var(--heading-font); font-weight: 600; text-align: left;
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .capability-card {
+            background: var(--white-color);
+            padding: 2.5rem;
+            text-align: center;
             border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all var(--transition-speed) ease;
         }
-        .accordion-header:hover { background-color: var(--accent-color-light); }
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; }
-        .accordion-content .content-inner { padding: 0 1.5rem 1.5rem 1.5rem; }
-        .accordion-item.active .accordion-content { max-height: 1000px; /* Large enough for content */ }
-        .accordion-icon { font-size: 1.2rem; transition: transform var(--transition-speed); }
-        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .capability-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
 
         /* --- Careers Section --- */
         .career-highlight { background: linear-gradient(135deg, #16407a, var(--secondary-color)); color: var(--white-color); padding: 3rem; border-radius: 8px; }
         .career-highlight h3, .career-highlight h4, .career-highlight ul li { color: var(--white-color); }
         .why-us-list li { margin-bottom: 0.8rem; display: flex; align-items: flex-start; }
         .why-us-list i { margin-right: 12px; margin-top: 5px; color: var(--secondary-color); }
+
+        /* --- NEW: Style for No Openings Message --- */
+        .no-openings-message {
+            margin-top: 1.5rem;
+            padding: 10px 15px;
+            background-color: var(--accent-color-dark);
+            border-radius: 5px;
+            color: var(--text-color);
+            font-style: italic;
+            opacity: 0;
+            transition: opacity var(--transition-speed) ease-in-out;
+        }
         
         /* --- Footer --- */
         footer { background: var(--primary-color); color: var(--accent-color-dark); padding-top: 5rem; }
@@ -225,12 +268,15 @@
         .modal-close-btn { position: absolute; top: 1.5rem; right: 2rem; font-size: 2rem; color: #aaa; cursor: pointer; transition: color var(--transition-speed); }
         .modal-close-btn:hover { color: var(--heading-color); }
         .modal-content h2 { margin-top: 0; }
+        .modal-content h4 { font-weight: 600; font-size: 1.1rem; margin-top: 1.5rem; }
+        .modal-content ul { list-style: disc; padding-left: 20px; }
+        .modal-content ul li { margin-bottom: 0.5rem; }
 
         /* --- Responsive Design --- */
         @media(max-width: 992px) {
             h1 { font-size: 2.8rem; }
             h2 { font-size: 2.2rem; }
-            .about-grid, .footer-grid, .counter-grid { grid-template-columns: 1fr; }
+            .about-grid, .footer-grid, .counter-grid, .capabilities-overview { grid-template-columns: 1fr; }
             .footer-grid > div { margin-bottom: 2rem; text-align:center; }
         }
         @media(max-width: 768px) {
@@ -286,7 +332,7 @@
         </section>
         
         <!-- Homepage Features Section -->
-        <section id="features" class="section-bg">
+        <section id="features">
             <div class="container">
                 <div class="features-grid">
                     <div class="feature-card">
@@ -309,7 +355,7 @@
         </section>
 
         <!-- Full About Us -->
-        <section id="about">
+        <section id="about" class="section-bg">
             <div class="container about-grid">
                  <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=2574" alt="Collaborative team meeting at South Waves">
@@ -345,7 +391,7 @@
         </section>
 
         <!-- Core Services Section -->
-        <section id="services" class="section-bg">
+        <section id="services">
             <div class="container">
                 <h2 class="section-title">Our Core Services</h2>
                 <p class="section-intro">We provide transformative technology solutions that drive efficiency, agility, and long-term growth for our clients in the insurance and financial sectors.</p>
@@ -369,59 +415,61 @@
             </div>
         </section>
 
-        <!-- Other Services (Accordion) -->
-        <section id="other-services">
+        <!-- Other Services (Static) -->
+        <section id="other-services" class="section-bg">
             <div class="container">
                 <h2 class="section-title">Our Extended Capabilities</h2>
                 <p class="section-intro">Technology has no boundaries, and neither do we. We deliver high-impact solutions across a wide range of technologies to serve diverse industries.</p>
-                 <div class="accordion">
-                     <!-- Tech Stack Item -->
-                     <div class="accordion-item">
-                         <button class="accordion-header">
-                             Broad Technology Spectrum (React, Java, .NET, and more)
-                             <i class="fas fa-chevron-down accordion-icon"></i>
-                         </button>
-                         <div class="accordion-content">
-                             <div class="content-inner">
-                                 <p>Beyond our core expertise, we deliver high-impact solutions across a wide range of technologies, including React, Java, .NET, SAP, and Salesforce. From robust enterprise applications to agile, cloud-native solutions, our team blends proven frameworks with the latest innovations to help you stay ahead in a competitive market.</p>
-                             </div>
-                         </div>
-                     </div>
-                      <!-- Industry Agnostic -->
-                     <div class="accordion-item">
-                         <button class="accordion-header">
-                             Industry-Agnostic Solutions
-                             <i class="fas fa-chevron-down accordion-icon"></i>
-                         </button>
-                         <div class="accordion-content">
-                             <div class="content-inner">
-                                 <p>Our approach is industry-agnostic, enabling us to serve diverse sectors with equal proficiency — from educational institutions implementing digital learning platforms, to hospitals enhancing patient management systems, to real estate companies offering immersive virtual property experiences. Whether it’s oil & energy, supply chain & logistics, or any large-scale community network, we deliver transformation where it matters most.</p>
-                             </div>
-                         </div>
-                     </div>
-                      <!-- More Services List -->
-                      <div class="accordion-item">
-                         <button class="accordion-header">
-                            Value-Added Technology Services
-                             <i class="fas fa-chevron-down accordion-icon"></i>
-                         </button>
-                         <div class="accordion-content">
-                             <div class="content-inner">
-                                 <ul>
-                                     <li><strong>Cloud Migration & Optimization:</strong> Seamless transition to AWS, Azure, or Google Cloud with minimal downtime.</li>
-                                     <li><strong>AI & Machine Learning Integration:</strong> Intelligent automation, predictive analytics, and personalized user experiences.</li>
-                                     <li><strong>API-Driven Architectures:</strong> Scalable, secure, and flexible integrations with third-party and legacy systems.</li>
-                                     <li><strong>Data Engineering & Visualization:</strong> Turning raw data into actionable insights with interactive dashboards.</li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
+                
+                <div class="capabilities-overview">
+                    <div>
+                        <h3>Broad Technology Spectrum</h3>
+                        <p>Beyond our core expertise, we deliver high-impact solutions across technologies including React, Java, .NET, SAP, and Salesforce. Our team blends proven frameworks with the latest innovations to help you stay ahead.</p>
+                    </div>
+                    <div>
+                        <h3>Industry-Agnostic Solutions</h3>
+                        <p>Our approach enables us to serve diverse sectors — from educational institutions to hospitals to real estate. We deliver transformation where it matters most for your unique domain.</p>
+                    </div>
+                </div>
+
+                <h3 class="subsection-title">Value-Added Technology Services</h3>
+                <div class="capabilities-grid">
+                    <div class="capability-card">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h4>Cloud Migration & Optimization</h4>
+                        <p>Seamless transition to AWS, Azure, or Google Cloud with minimal downtime.</p>
+                    </div>
+                    <div class="capability-card">
+                        <i class="fas fa-brain"></i>
+                        <h4>AI & Machine Learning</h4>
+                        <p>Intelligent automation, predictive analytics, and personalized user experiences.</p>
+                    </div>
+                    <div class="capability-card">
+                        <i class="fas fa-link"></i>
+                        <h4>API-Driven Architectures</h4>
+                        <p>Scalable, secure, and flexible integrations with third-party and legacy systems.</p>
+                    </div>
+                    <div class="capability-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Cross-Platform & Mobile</h4>
+                        <p>Consistent, high-performance experiences across web, iOS, and Android.</p>
+                    </div>
+                    <div class="capability-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h4>Data Engineering & Visualization</h4>
+                        <p>Turning raw data into actionable insights with interactive dashboards.</p>
+                    </div>
+                    <div class="capability-card">
+                        <i class="fas fa-user-shield"></i>
+                        <h4>Security & Compliance</h4>
+                        <p>Ensuring adherence to global standards like GDPR, HIPAA, and ISO 27001.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Careers Section -->
-        <section id="careers" class="section-bg">
+        <section id="careers">
              <div class="container">
                 <h2 class="section-title">Grow With Us</h2>
                  <div class="about-grid" style="align-items: flex-start;">
@@ -429,7 +477,8 @@
                          <h3>Build Your Future at South Waves</h3>
                          <p>We believe that motivated, fulfilled, and valued team members are the driving force behind our success. A career here offers continuous learning, personal growth, competitive compensation, and comprehensive benefits.</p>
                         <p>Join a collaborative culture where your voice is heard, your contributions are recognized, and your career can truly take flight.</p>
-                         <a href="#contact" class="btn">View Open Positions</a>
+                         <button id="view-positions-btn" class="btn">View Open Positions</button>
+                         <!-- Message will be injected here by JS -->
                      </div>
                      <div class="career-highlight">
                         <h4>Why Work With Us?</h4>
@@ -497,7 +546,54 @@
         <div class="modal-container">
             <i class="fas fa-times modal-close-btn"></i>
             <div class="modal-content">
-                <h2>Terms and Conditions</h2><p><strong>Effective Date:</strong> August 10, 2025</p><p>Welcome to South Waves Tech Services Private Limited ("South Waves," "we," "our," or "us"). By accessing or using our website, https://www.southwaves.in (the “Website”), you agree to comply with and be bound by these Terms and Conditions (“Terms”). Please read them carefully. If you do not agree to these Terms, you must not use our Website.</p><h3>1. Acceptance of Terms</h3><p>By accessing or using this Website, you confirm that you are at least 18 years old or are accessing the Website under the supervision of a parent or legal guardian. Your continued use of the Website constitutes your acceptance of these Terms in full.</p><h3>2. Permitted Use of the Website</h3><p>You agree to use the Website solely for lawful purposes and in accordance with these Terms. You must not violate any applicable local, national, or international laws or regulations.</p><h3>3. Intellectual Property Rights</h3><p>All materials on the Website are the exclusive property of South Waves and are protected by applicable intellectual property laws.</p>...and so on.
+                <h2>Terms and Conditions</h2>
+                <p><strong>Effective Date: [Insert Date]</strong></p>
+                <p>Welcome to South Waves Tech Services Private Limited ("South Waves," "we," "our," or "us"). By accessing or using our website, https://www.southwaves.in (the “Website”), you agree to comply with and be bound by these Terms and Conditions (“Terms”). Please read them carefully. If you do not agree to these Terms, you must not use our Website.</p>
+                
+                <h4>1. Acceptance of Terms</h4>
+                <p>By accessing or using this Website, you confirm that you are at least 18 years old or are accessing the Website under the supervision of a parent or legal guardian. Your continued use of the Website constitutes your acceptance of these Terms in full.</p>
+            
+                <h4>2. Permitted Use of the Website</h4>
+                <p>You agree to use the Website solely for lawful purposes and in accordance with these Terms. You must not:</p>
+                <ul>
+                    <li>Violate any applicable local, national, or international laws or regulations.</li>
+                    <li>Upload, transmit, or distribute any harmful, malicious, or disruptive software, code, or content.</li>
+                    <li>Attempt to gain unauthorized access to the Website, its servers, or associated systems.</li>
+                    <li>Engage in activities that compromise or attempt to compromise the security, performance, or integrity of the Website.</li>
+                    <li>Copy, reproduce, distribute, modify, or create derivative works from any content on the Website without our prior written consent.</li>
+                </ul>
+            
+                <h4>3. Intellectual Property Rights</h4>
+                <p>All materials on the Website, including but not limited to text, graphics, images, logos, designs, and code, are the exclusive property of South Waves or its licensors and are protected by applicable intellectual property laws. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
+            
+                <h4>4. Third-Party Links</h4>
+                <p>The Website may include links to third-party websites or resources for your convenience. These links do not imply our endorsement, and we have no control over the content, policies, or practices of such websites. South Waves shall not be responsible for any loss or damage that may arise from your use of them.</p>
+            
+                <h4>5. Privacy & Data Protection</h4>
+                <p>Your privacy is important to us. Any personal data collected through the Website will be handled in accordance with our Privacy Policy and applicable data protection laws, including the General Data Protection Regulation (GDPR) where applicable.</p>
+            
+                <h4>6. Disclaimer of Warranties</h4>
+                <p>The Website and its content are provided “as is” and “as available” without warranties of any kind, whether express or implied. We make no representation or warranty regarding the accuracy, completeness, reliability, or availability of the Website or its content.</p>
+            
+                <h4>7. Limitation of Liability</h4>
+                <p>To the fullest extent permitted by law, South Waves, its affiliates, officers, employees, and agents shall not be liable for any direct, indirect, incidental, special, or consequential damages resulting from:</p>
+                <ul>
+                    <li>Your access to or use of the Website.</li>
+                    <li>Any errors, omissions, or inaccuracies in the Website’s content.</li>
+                    <li>Any unauthorized access to or use of our servers or information.</li>
+                </ul>
+                
+                <h4>8. Indemnification</h4>
+                <p>You agree to indemnify, defend, and hold harmless South Waves, its affiliates, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising out of or related to your violation of these Terms or your use of the Website.</p>
+            
+                <h4>9. Modifications to the Terms</h4>
+                <p>We reserve the right to update or modify these Terms at any time without prior notice. Any changes will be posted on this page with an updated Effective Date. Continued use of the Website after changes have been posted constitutes your acceptance of the updated Terms.</p>
+            
+                <h4>10. Governing Law & Jurisdiction</h4>
+                <p>These Terms are governed by and construed in accordance with the laws of India, without regard to its conflict of law provisions. Any disputes shall be subject to the exclusive jurisdiction of the courts in Chennai, Tamil Nadu, India.</p>
+            
+                <h4>11. Contact Us</h4>
+                <p>For any questions, concerns, or clarifications regarding these Terms, please contact us at:<br>📧 Email: info@southwaves.in</p>
             </div>
         </div>
     </div>
@@ -505,7 +601,95 @@
         <div class="modal-container">
             <i class="fas fa-times modal-close-btn"></i>
             <div class="modal-content">
-                <h2>Privacy Policy</h2><p><strong>Effective Date:</strong> August 10, 2025</p><p>At South Waves Tech Services ("South Waves," "we," "our," or "us"), your privacy is important to us. This Privacy Policy explains how we collect, use, store, and protect your information when you use our website, https://www.southwaves.com (the “Website”).</p><h3>1. Information We Collect</h3><p>a) Personal Information: Name, Email address, etc.<br>b) Non-Personal Information: IP address, browser type, etc.</p><h3>2. How We Use Your Information</h3><p>We use your information to respond to your inquiries, improve the website, and for security.</p>...and so on.
+                <h2>Privacy Policy</h2>
+                <p><strong>Effective Date: [Insert Date]</strong></p>
+                <p>At South Waves Tech Services ("South Waves," "we," "our," or "us"), your privacy is important to us. This Privacy Policy explains how we collect, use, store, and protect your information when you use our website, https://www.southwaves.com (the “Website”).</p>
+                <p>By using our Website, you consent to the practices described in this Privacy Policy.</p>
+            
+                <h4>1. Information We Collect</h4>
+                <p><strong>a) Personal Information (provided by you):</strong></p>
+                <ul>
+                    <li>Name</li>
+                    <li>Email address</li>
+                    <li>Phone number</li>
+                    <li>Company/organization details</li>
+                    <li>Any additional information submitted through our contact forms or email</li>
+                </ul>
+                <p><strong>b) Non-Personal Information (collected automatically):</strong></p>
+                <ul>
+                    <li>IP address</li>
+                    <li>Browser type and version</li>
+                    <li>Operating system</li>
+                    <li>Pages visited, time spent, and browsing patterns</li>
+                    <li>Referring website or source</li>
+                    <li>Cookies and similar tracking technologies</li>
+                </ul>
+            
+                <h4>2. How We Use Your Information</h4>
+                <p>We use your information to:</p>
+                <ul>
+                    <li>Respond to your inquiries and service requests</li>
+                    <li>Improve Website content, performance, and user experience</li>
+                    <li>Send relevant updates, newsletters, and marketing content (with your consent)</li>
+                    <li>Ensure the security and integrity of the Website</li>
+                    <li>Comply with applicable legal requirements</li>
+                </ul>
+                
+                <h4>3. Legal Basis for Processing (GDPR)</h4>
+                <p>For users in the EEA, we process personal data under the following legal bases:</p>
+                <ul>
+                    <li><strong>Consent</strong> – when you voluntarily provide data</li>
+                    <li><strong>Contract</strong> – when processing is necessary to fulfil a service</li>
+                    <li><strong>Legitimate Interests</strong> – to enhance business operations and security</li>
+                    <li><strong>Legal Obligation</strong> – to comply with applicable laws</li>
+                </ul>
+            
+                <h4>4. Cookies and Tracking</h4>
+                <p>We use cookies to:</p>
+                <ul>
+                    <li>Enable essential site functions</li>
+                    <li>Track site usage for analytics</li>
+                    <li>Improve content and navigation</li>
+                </ul>
+                <p>You can disable cookies in your browser settings, but some features may not function properly.</p>
+            
+                <h4>5. Data Sharing</h4>
+                <p>We do not sell your personal information. We may share it with:</p>
+                <ul>
+                    <li><strong>Service Providers</strong> – for hosting, analytics, or customer support</li>
+                    <li><strong>Legal Authorities</strong> – when required by law</li>
+                    <li><strong>Business Transfers</strong> – in case of a merger or acquisition</li>
+                </ul>
+            
+                <h4>6. Data Retention</h4>
+                <p>We retain personal data only for as long as necessary to fulfill its intended purpose, meet legal obligations, or resolve disputes.</p>
+            
+                <h4>7. Data Security</h4>
+                <p>We employ technical, administrative, and organizational measures to safeguard your information. While we take reasonable precautions, no system is completely secure.</p>
+                
+                <h4>8. Your Rights</h4>
+                <p>Depending on your location, you may request to:</p>
+                <ul>
+                    <li>Access your personal data</li>
+                    <li>Correct inaccurate data</li>
+                    <li>Delete your data</li>
+                    <li>Restrict processing</li>
+                    <li>Withdraw consent</li>
+                    <li>Request data portability</li>
+                </ul>
+                <p>Requests can be sent to info@southwaves.in.</p>
+                
+                <h4>9. International Data Transfers</h4>
+                <p>If you access the Website from outside India, your data may be transferred and processed in other countries that may have different data protection laws. By using the Website, you consent to such transfers.</p>
+                
+                <h4>10. Third-Party Links</h4>
+                <p>We are not responsible for the privacy practices of third-party websites linked from our Website.</p>
+                
+                <h4>11. Policy Updates</h4>
+                <p>We may update this Privacy Policy periodically. Updates will be posted on this page with a new Effective Date. Continued use of the Website after updates constitutes acceptance of the revised policy.</p>
+            
+                <h4>12. Contact Us</h4>
+                <p>For questions or privacy-related concerns, contact us at:<br>📧 Email: info@southwaves.in</p>
             </div>
         </div>
     </div>
@@ -552,46 +736,58 @@
 
             // --- Animated Counters ---
             const counters = document.querySelectorAll('.counter');
-            const activateCounters = () => {
-                counters.forEach(counter => {
-                    const updateCount = () => {
-                        const target = +counter.getAttribute('data-target');
-                        const count = +counter.innerText;
-                        const increment = target / 200; // Speed of animation
+            const activateCounters = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const updateCount = () => {
+                    const count = +counter.innerText;
+                    const increment = target / 200; // Speed of animation
 
-                        if(count < target) {
-                            counter.innerText = Math.ceil(count + increment);
-                            setTimeout(updateCount, 10);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    updateCount();
-                    counter.parentElement.classList.add('counted'); // Mark as counted
-                });
+                    if(count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
             }
             const counterObserver = new IntersectionObserver((entries, observer) => {
                  entries.forEach(entry => {
-                    if(entry.isIntersecting && !entry.target.classList.contains('counted')){
-                       activateCounters();
+                    if(entry.isIntersecting){
+                       activateCounters(entry.target);
                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.5 });
-            document.querySelectorAll('.counter-grid').forEach(grid => counterObserver.observe(grid));
-
-            // --- Accordion Logic ---
-            const accordionItems = document.querySelectorAll('.accordion-item');
-            accordionItems.forEach(item => {
-                const header = item.querySelector('.accordion-header');
-                header.addEventListener('click', () => {
-                    const currentlyActive = document.querySelector('.accordion-item.active');
-                    if(currentlyActive && currentlyActive !== item) {
-                       currentlyActive.classList.remove('active');
+            counters.forEach(counter => counterObserver.observe(counter));
+            
+            // --- NEW 'View Open Positions' Button Functionality ---
+            const viewPositionsBtn = document.getElementById('view-positions-btn');
+            if (viewPositionsBtn) {
+                viewPositionsBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    
+                    // Check if the message already exists to avoid duplicates
+                    if (document.getElementById('no-openings-msg')) {
+                        return;
                     }
-                    item.classList.toggle('active');
+
+                    // Create the message element
+                    const noOpeningsMessage = document.createElement('p');
+                    noOpeningsMessage.id = 'no-openings-msg';
+                    noOpeningsMessage.className = 'no-openings-message';
+                    noOpeningsMessage.textContent = 'Currently, there are no open positions. Please check back later.';
+
+                    // Insert the message after the button and fade it in
+                    viewPositionsBtn.after(noOpeningsMessage);
+                    setTimeout(() => {
+                        noOpeningsMessage.style.opacity = '1';
+                    }, 10); 
+                    
+                    // Disable the button to prevent more clicks
+                    viewPositionsBtn.disabled = true;
                 });
-            });
+            }
 
             // --- Modal Logic ---
             document.querySelectorAll('.modal-trigger').forEach(trigger => {
@@ -610,7 +806,8 @@
 
             // --- Contact Form ---
             document.getElementById('contact-form').addEventListener('submit', (e) => {
-                e.preventDefault(); alert('Thank you for your message! We will be in touch soon.');
+                e.preventDefault(); 
+                alert('Thank you for your message! We will be in touch soon.');
                 e.target.reset();
             });
 
