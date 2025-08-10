@@ -325,7 +325,7 @@
         <!-- Hero Section -->
         <section id="home">
             <div class="hero-content">
-                <h1>South Waves Tech Services Pvt. Ltd.</h1>
+                <h1>South Waves Tech Pvt. Ltd.</h1>
                 <p class="tagline">Empowering insurers and financial institutions to transform, innovate, and lead in an evolving digital era.</p>
                 <a href="#about" class="btn">Discover More</a>
             </div>
@@ -808,15 +808,61 @@
             });
 
             // --- Contact Form ---
-            document.getElementById('contact-form').addEventListener('submit', (e) => {
-                e.preventDefault(); 
-                alert('Thank you for your message! We will be in touch soon.');
-                e.target.reset();
-            });
+            const contactForm = document.getElementById('contact-form');
+            const formStatus = document.getElementById('form-status');
 
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault(); 
+                
+                const submitButton = contactForm.querySelector('button');
+                formStatus.textContent = '';
+                formStatus.style.color = 'inherit';
+
+                // Basic validation
+                if (!contactForm.name.value || !contactForm.email.value || !contactForm.message.value) {
+                    formStatus.textContent = 'Please fill out all fields.';
+                    formStatus.style.color = '#e74c3c';
+                    return;
+                }
+                
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+
+                const formData = {
+                    name: contactForm.name.value,
+                    email: contactForm.email.value,
+                    message: contactForm.message.value,
+                };
+
+                try {
+                    // This special path '/.netlify/functions/send-email' works when deployed on Netlify
+                    const response = await fetch('/.netlify/functions/send-email', {
+                        method: 'POST',
+                        body: JSON.stringify(formData),
+                        headers: { 'Content-Type': 'application/json' },
+                    });
+
+                    if (response.ok) {
+                        formStatus.textContent = 'Thank you! Your message has been sent.';
+                        formStatus.style.color = 'var(--secondary-color)';
+                        contactForm.reset();
+                    } else {
+                        throw new Error('Server responded with an error.');
+                    }
+                } catch (error) {
+                    formStatus.textContent = 'Sorry, there was an error. Please try again.';
+                    formStatus.style.color = '#e74c3c'; // Red for errors
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send';
+                }
+            });
             // --- Current Year in Footer ---
             document.getElementById('current-year').textContent = new Date().getFullYear();
         });
+
+
+
     </script>
 </body>
 </html>
