@@ -78,17 +78,19 @@
         h3 { font-size: 1.8rem; font-weight: 600; }
         .subsection-title {
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
-            margin-top: 3.5rem;
+            margin-top: 4.5rem;
             margin-bottom: 2.5rem;
+            font-weight: 600;
         }
 
         h4 { font-size: 1.2rem; font-weight: 500; }
         
         p { margin-bottom: 1.5rem; max-width: 75ch; }
         .section-intro { max-width: 800px; margin: 0 auto 4rem auto; text-align: center; }
-
+        .text-left { text-align: left; }
+        
         a { text-decoration: none; color: var(--secondary-color); font-weight: 500; }
         ul { list-style: none; }
         
@@ -161,12 +163,19 @@
         #home .hero-content { max-width: 900px; }
         #home h1 { color: var(--white-color); margin-bottom: 1rem; }
         #home .tagline { font-size: 1.3rem; font-weight: 300; max-width: 600px; margin: 0 auto 2.5rem auto; }
-
-        /* --- Features/Homepage About Section --- */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .feature-card { padding: 2.5rem; text-align: center; }
-        .feature-card .icon { font-size: 3rem; color: var(--secondary-color); margin-bottom: 1.5rem; }
-        .feature-card h4 { color: var(--primary-color); font-weight: 600; }
+        
+        /* --- Homepage Intro Section --- */
+        .intro-block {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .intro-block h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        .intro-block p {
+            max-width: unset;
+        }
 
         /* --- Full About Section --- */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
@@ -189,14 +198,32 @@
         }
         .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.08); }
         .service-card i { font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1.5rem; }
-
-        /* --- Other Services (Static) Section --- */
-        .capabilities-overview {
+        
+        .challenges-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+            text-align: left;
         }
+        .challenge-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .approach-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .approach-list i {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-right: 15px;
+            margin-top: 6px;
+        }
+        
+        /* --- Other Services Section --- */
         .capabilities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -223,10 +250,11 @@
         /* --- Careers Section --- */
         .career-highlight { background: linear-gradient(135deg, #16407a, var(--secondary-color)); color: var(--white-color); padding: 3rem; border-radius: 8px; }
         .career-highlight h3, .career-highlight h4, .career-highlight ul li { color: var(--white-color); }
-        .why-us-list li { margin-bottom: 0.8rem; display: flex; align-items: flex-start; }
-        .why-us-list i { margin-right: 12px; margin-top: 5px; color: var(--secondary-color); }
+        .why-us-list li { margin-bottom: 1.2rem; display: flex; align-items: flex-start; }
+        .why-us-list i { margin-right: 15px; margin-top: 5px; color: var(--white-color); opacity: 0.9;}
+        .why-us-list strong { display: block; margin-bottom: 0.2rem; font-weight: 600;}
 
-        /* --- NEW: Style for No Openings Message --- */
+
         .no-openings-message {
             margin-top: 1.5rem;
             padding: 10px 15px;
@@ -240,7 +268,7 @@
         
         /* --- Footer --- */
         footer { background: var(--primary-color); color: var(--accent-color-dark); padding-top: 5rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; padding-bottom: 3rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; padding-bottom: 3rem; }
         footer h4 { color: var(--white-color); font-size: 1.2rem; margin-bottom: 1.5rem; }
         .footer-links li { margin-bottom: 1rem; }
         .footer-links a { color: var(--accent-color-light); font-weight: 400; transition: color var(--transition-speed); cursor: pointer; }
@@ -276,7 +304,7 @@
         @media(max-width: 992px) {
             h1 { font-size: 2.8rem; }
             h2 { font-size: 2.2rem; }
-            .about-grid, .footer-grid, .counter-grid, .capabilities-overview { grid-template-columns: 1fr; }
+            .about-grid, .footer-grid, .counter-grid { grid-template-columns: 1fr; }
             .footer-grid > div { margin-bottom: 2rem; text-align:center; }
         }
         @media(max-width: 768px) {
@@ -298,6 +326,7 @@
             .counter-grid { grid-template-columns: 1fr; gap: 3rem; }
             .about-grid { gap: 2rem; }
             .modal-container { padding: 1.5rem; }
+            .challenges-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -331,25 +360,14 @@
             </div>
         </section>
         
-        <!-- Homepage Features Section -->
+        <!-- Homepage About Section -->
         <section id="features">
             <div class="container">
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="icon"><i class="fas fa-layer-group"></i></div>
-                        <h4>Deep Domain Expertise</h4>
-                        <p>Specialized knowledge in Guidewire, Duck Creek, and Mainframe Modernization.</p>
-                    </div>
-                     <div class="feature-card">
-                        <div class="icon"><i class="fas fa-cogs"></i></div>
-                        <h4>Precision Solutions</h4>
-                        <p>Powered by leading pricing engines like Ratabase, Earnix, and Akur8 for accuracy and speed.</p>
-                    </div>
-                     <div class="feature-card">
-                        <div class="icon"><i class="fas fa-chart-line"></i></div>
-                        <h4>Measurable Growth</h4>
-                        <p>Our approach enables faster decisions, smarter operations, and tangible business impact.</p>
-                    </div>
+                <div class="intro-block">
+                    <h2>Our Mission</h2>
+                    <p class="text-left">At South Waves, we empower insurers and financial institutions to transform, innovate, and lead in an evolving digital era. With deep expertise in Guidewire®, Duck Creek®, and mainframe modernization, plus a dedicated Insurance Pricing Center of Excellence, we deliver precision solutions powered by Ratabase®, Earnix®, Akur8®, Hyperexponential™, and Radar Live™.</p>
+                    <p class="text-left">Our approach blends deep domain expertise, modern technology, and cost-effective execution—enabling faster decisions, smarter operations, and measurable growth.</p>
+                    <a href="#contact" class="btn" style="margin-top: 1rem;">Ready to modernize? Let’s talk.</a>
                 </div>
             </div>
         </section>
@@ -363,14 +381,14 @@
                 <div class="about-content">
                     <h3>Modernize with Confidence, Innovate with Purpose</h3>
                     <p>At South Waves, we help insurers and financial institutions modernize with confidence, innovate with purpose, and stay agile in a fast-changing marketplace.</p>
-                    <p>Our expertise covers Guidewire, Duck Creek, and Mainframe Modernization, alongside a dedicated Center of Excellence (CoE) for Insurance Pricing. We are proficient in leading pricing engines such as Ratabase, Earnix Price-It, Akur8, Hyperexponential (hx Renew), and Radar Live—delivering platforms built for speed, accuracy, and scalability.</p>
-                    <p>We take an end-to-end transformation approach—from strategic planning and smooth implementation to continuous improvement—ensuring every solution delivers tangible business impact.</p>
+                    <p>Our expertise covers Guidewire®, Duck Creek®, and mainframe modernization, alongside a dedicated Center of Excellence (CoE) for insurance pricing. We are proficient in leading pricing engines such as Ratabase®, Earnix Price-It®, Akur8®, Hyperexponential™ (hx Renew), and Radar Live™—delivering platforms built for speed, accuracy, and scalability.</p>
+                    <p>We take an end-to-end transformation approach—from strategic planning and smooth implementation to continuous improvement—ensuring every solution delivers tangible business impact. With capabilities spanning data, cloud, digital platforms, and AI-powered innovation, we enable our clients to streamline processes, respond faster to market shifts, and deliver exceptional value to their customers—today and into the future.</p>
                 </div>
             </div>
         </section>
 
         <!-- Animated Counters -->
-        <section id="counters">
+        <!-- <section id="counters">
             <div class="container">
                  <p class="section-intro">Delivering excellence, powered by experience and innovation.</p>
                  <div class="counter-grid">
@@ -388,28 +406,57 @@
                      </div>
                  </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Core Services Section -->
         <section id="services">
             <div class="container">
-                <h2 class="section-title">Our Core Services</h2>
-                <p class="section-intro">We provide transformative technology solutions that drive efficiency, agility, and long-term growth for our clients in the insurance and financial sectors.</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-intro">At South Waves, we empower insurers and financial institutions with transformative technology solutions that drive efficiency, agility, and long-term growth. Our expertise spans Guidewire® implementations, mainframe modernization, and insurance pricing & rating transformation—ensuring our clients stay ahead in a competitive marketplace.</p>
+                
+                <div>
+                    <h3 class="subsection-title">Challenges We Solve</h3>
+                    <p class="section-intro" style="padding-bottom: 0; margin-bottom: 2rem;">In the evolving insurance and InsurTech landscape, two major pain points continue to impact operational efficiency and financial performance:</p>
+                    
+                    <div class="challenges-grid">
+                        <div class="challenge-card">
+                            <h4>1. Legacy Systems – High Cost, Low Agility</h4>
+                            <p>Many insurers remain dependent on legacy platforms that demand significant budget allocations year after year. These systems require large teams to maintain, adapt slowly to market changes, and consume resources that could otherwise be invested in innovation. The result is escalating maintenance costs and reduced flexibility to fund strategic initiatives.</p>
+                        </div>
+                        <div class="challenge-card">
+                            <h4>2. Modernization – High Investment, Limited Talent</h4>
+                            <p>While modernization offers the promise of efficiency and agility, many new technologies carry high implementation costs. Skilled professionals for these platforms are in short supply, driving up hiring and project expenses. For some insurers, modernization can feel as financially burdensome as maintaining outdated systems.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="subsection-title">Our Approach: Cost-Effective, Sustainable Transformation</h3>
+                    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                        <p>At South Waves, we address these challenges head-on by blending deep insurance domain expertise with a pragmatic approach to modernization:</p>
+                        <ul class="approach-list">
+                            <li><i class="fas fa-arrow-down-circle"></i><div><strong>Lower Your Operational Spend</strong> – Streamline and consolidate systems to reduce maintenance overhead.</div></li>
+                            <li><i class="fas fa-bullseye"></i><div><strong>Achieve Measurable ROI</strong> – Implement right-sized, cost-efficient architectures designed for long-term value.</div></li>
+                            <li><i class="fas fa-users"></i><div><strong>Deploy Dual-Skilled Experts</strong> – Leverage teams fluent in both legacy and modern platforms to minimize ramp-up costs.</div></li>
+                            <li><i class="fas fa-cogs"></i><div><strong>Build for Sustainable Growth</strong> – Create scalable, maintainable solutions that keep total cost of ownership in check year after year.</div></li>
+                        </ul>
+                        <p style="margin-top: 2rem;"><strong>The Result:</strong> Working with South Waves means achieving the right balance between innovation and budget control—empowering insurers to modernize with confidence, accelerate time-to-value, and drive measurable business impact.</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 5rem;">
                     <div class="service-card">
                         <i class="fas fa-shield-alt"></i>
                         <h3>Guidewire Solutions</h3>
-                        <p>Unlock Guidewire’s full potential with our end-to-end services, from strategic roadmapping and smooth deployment to continuous innovation and support.</p>
+                        <p>Guidewire® is trusted by P&C insurers worldwide for its ability to streamline operations, improve customer engagement, and fuel growth. We work with insurers to help them maximize their use of the Guidewire platform—covering the complete lifecycle from strategic roadmap design and smooth deployment to upgrades, fine-tuning, and continuous innovation. With our guidance, insurers achieve greater operational efficiency, cost control, and lasting customer value.</p>
                     </div>
                      <div class="service-card">
                         <i class="fas fa-server"></i>
                         <h3>Mainframe Modernization</h3>
-                        <p>Replace outdated legacy systems with agile, efficient, and future-ready platforms tailored for the Insurance and Banking sectors at competitive costs.</p>
+                        <p>Legacy mainframes can slow down innovation. Our mainframe modernization services replace complex, outdated systems with agile, efficient, and future-ready platforms—tailored for the insurance and banking sectors. From rating and pricing engines to core business applications, we deliver premium-quality transformations at competitive costs, enabling faster operations, easier maintenance, and sustainable business growth.</p>
                     </div>
                      <div class="service-card">
                         <i class="fas fa-calculator"></i>
-                        <h3>Pricing & Rating Transformation</h3>
-                        <p>Gain a competitive edge with modernized pricing frameworks on leading platforms like Earnix and Ratabase, ensuring faster, more flexible decision-making.</p>
+                        <h3>Insurance Pricing & Rating Transformation</h3>
+                        <p>In a fast-changing market, pricing agility is a competitive advantage. We specialize in migrating legacy rating systems to industry-leading platforms such as Earnix®, hx Renew by Hyperexponential™, Akur8®, and Ratabase®—without disrupting live production environments. Our modernized pricing frameworks deliver faster decision-making, greater flexibility, and measurable business impact, ensuring you remain competitive and responsive to market demands.</p>
                     </div>
                 </div>
             </div>
@@ -418,21 +465,12 @@
         <!-- Other Services (Static) -->
         <section id="other-services" class="section-bg">
             <div class="container">
-                <h2 class="section-title">Our Extended Capabilities</h2>
-                <p class="section-intro">Technology has no boundaries, and neither do we. We deliver high-impact solutions across a wide range of technologies to serve diverse industries.</p>
+                <h2 class="section-title">Custom Solutions & Technology Integration</h2>
+                <p class="section-intro">While our core expertise lies in insurance and finance, our deep technical capabilities allow us to build and integrate custom solutions on a wide range of platforms. We blend proven frameworks with the latest innovations to help you stay ahead in a competitive market. Our approach is flexible, enabling us to handle a wide range of high-impact projects. From building robust enterprise applications to agile, cloud-native solutions, we work with technologies like React, Java, .NET, SAP®, and Salesforce® to extend the capabilities of your core systems and enhance your business operations.</p>
                 
-                <div class="capabilities-overview">
-                    <div>
-                        <h3>Broad Technology Spectrum</h3>
-                        <p>Beyond our core expertise, we deliver high-impact solutions across technologies including React, Java, .NET, SAP, and Salesforce. Our team blends proven frameworks with the latest innovations to help you stay ahead.</p>
-                    </div>
-                    <div>
-                        <h3>Industry-Agnostic Solutions</h3>
-                        <p>Our approach enables us to serve diverse sectors — from educational institutions to hospitals to real estate. We deliver transformation where it matters most for your unique domain.</p>
-                    </div>
-                </div>
+                <h3 class="subsection-title">Additional Capabilities</h3>
+                <p class="section-intro">To deliver end-to-end value, we extend our capabilities beyond traditional development:</p>
 
-                <h3 class="subsection-title">Value-Added Technology Services</h3>
                 <div class="capabilities-grid">
                     <div class="capability-card">
                         <i class="fas fa-cloud-upload-alt"></i>
@@ -441,7 +479,7 @@
                     </div>
                     <div class="capability-card">
                         <i class="fas fa-brain"></i>
-                        <h4>AI & Machine Learning</h4>
+                        <h4>AI & Machine Learning Integration</h4>
                         <p>Intelligent automation, predictive analytics, and personalized user experiences.</p>
                     </div>
                     <div class="capability-card">
@@ -451,7 +489,7 @@
                     </div>
                     <div class="capability-card">
                         <i class="fas fa-mobile-alt"></i>
-                        <h4>Cross-Platform & Mobile</h4>
+                        <h4>Cross-Platform & Mobile Development</h4>
                         <p>Consistent, high-performance experiences across web, iOS, and Android.</p>
                     </div>
                     <div class="capability-card">
@@ -461,33 +499,36 @@
                     </div>
                     <div class="capability-card">
                         <i class="fas fa-user-shield"></i>
-                        <h4>Security & Compliance</h4>
+                        <h4>Security & Compliance Consulting</h4>
                         <p>Ensuring adherence to global standards like GDPR, HIPAA, and ISO 27001.</p>
                     </div>
                 </div>
+                <p class="section-intro" style="margin-top: 4rem;">At South Waves, we don’t just work with technology—we craft it to align with your vision, your industry, and your growth ambitions.</p>
             </div>
         </section>
 
         <!-- Careers Section -->
         <section id="careers">
              <div class="container">
-                <h2 class="section-title">Grow With Us</h2>
+                <h2 class="section-title">Careers at South Waves</h2>
                  <div class="about-grid" style="align-items: flex-start;">
                      <div>
                          <h3>Build Your Future at South Waves Tech</h3>
-                         <p>We believe that motivated, fulfilled, and valued team members are the driving force behind our success. A career here offers continuous learning, personal growth, competitive compensation, and comprehensive benefits.</p>
-                        <p>Join a collaborative culture where your voice is heard, your contributions are recognized, and your career can truly take flight.</p>
-                         <button id="view-positions-btn" class="btn">View Open Positions</button>
+                         <p>At South Waves, we know that motivated, fulfilled, and valued team members are the driving force behind our success. We specialize in the P&C and Insurtech sectors, blending cutting-edge technology with deep domain expertise to create exceptional value for our clients and partners.</p>
+                        <p>A career here offers continuous learning, personal growth, competitive compensation, and comprehensive benefits. You’ll take on meaningful challenges in a dynamic, world-class workplace, guided by supportive leadership and surrounded by opportunities to expand your skills.</p>
+                        <h4 style="margin-top:2rem;">Our Culture</h4>
+                        <p>We thrive on collaboration, creativity, and respect. Every team member’s voice matters, and every idea is valued. We encourage open communication, celebrate achievements, and foster a workplace where innovation and teamwork drive success.</p>
+                         <button id="view-positions-btn" class="btn" style="margin-top: 1rem;">View Open Positions</button>
                          <!-- Message will be injected here by JS -->
                      </div>
                      <div class="career-highlight">
                         <h4>Why Work With Us?</h4>
-                        <ul class="why-us-list" style="color:white">
-                            <li><i class="fas fa-lightbulb"></i>Innovation-Driven Culture</li>
-                            <li><i class="fas fa-user-graduate"></i>Growth & Learning</li>
-                            <li><i class="fas fa-piggy-bank"></i>Competitive Rewards</li>
-                            <li><i class="fas fa-heart"></i>Work-Life Balance</li>
-                            <li><i class="fas fa-globe-americas"></i>Global Impact</li>
+                        <ul class="why-us-list">
+                            <li><i class="fas fa-lightbulb"></i><div><strong>Innovation-Driven Culture</strong> – Work with cutting-edge tools and methodologies.</div></li>
+                            <li><i class="fas fa-user-graduate"></i><div><strong>Growth & Learning</strong> – Access to training, mentorship, and cross-domain exposure.</div></li>
+                            <li><i class="fas fa-piggy-bank"></i><div><strong>Competitive Rewards</strong> – Market-leading salaries and performance-based incentives.</div></li>
+                            <li><i class="fas fa-heart"></i><div><strong>Work-Life Balance</strong> – Flexible arrangements to support personal and professional needs.</div></li>
+                            <li><i class="fas fa-globe-americas"></i><div><strong>Global Impact</strong> – Contribute to solutions used by insurers and financial institutions worldwide.</div></li>
                         </ul>
                      </div>
                  </div>
@@ -502,7 +543,6 @@
             <div class="footer-grid">
                 <div class="footer-about">
                     <h4>South Waves Tech</h4>
-                    <!-- <p>A technology partner dedicated to keeping your business agile, competitive, and ready for the future.</p> -->
                     <div class="footer-contact-info">
                         <p><i class="fas fa-map-marker-alt"></i><span>P9 A5 Green Castle<br>2nd Cross Street, Tonakela Link Rd,<br>Jothi Nagar, Thirumullaivoyal Village<br>Tiruvallur (Dist), Chennai-600062</span></p>
                         <p><i class="fas fa-envelope"></i><a href="mailto:info@southwaves.in">info@southwaves.in</a></p>
@@ -539,6 +579,9 @@
             </div>
             <div class="footer-bottom">
                  <p>&copy; <span id="current-year"></span> South Waves Tech Services Pvt. Ltd. All Rights Reserved.</p>
+                 <p style="font-size: 0.8rem; margin-top: 1rem; color: #ccc; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+                    <sub> Guidewire®, Guidewire InsuranceSuite®, Duck Creek®, Ratabase®, Earnix®, Akur8®, Hyperexponential™, Radar Live™, SAP®, and Salesforce® are trademarks or registered trademarks of their respective owners in the United States and/or other countries. All other trademarks are the property of their respective owners. South Waves Tech Services Private Limited is not affiliated with or endorsed by any of the trademark owners. </sub>
+                 </p>
             </div>
         </div>
     </footer>
@@ -552,7 +595,7 @@
             <div class="modal-content">
                 <h2>Terms and Conditions</h2>
                 <p><strong>Effective Date: [Insert Date]</strong></p>
-                <p>Welcome to South Waves Tech Services Private Limited ("South Waves," "we," "our," or "us"). By accessing or using our website, https://www.southwaves.in (the “Website”), you agree to comply with and be bound by these Terms and Conditions (“Terms”). Please read them carefully. If you do not agree to these Terms, you must not use our Website.</p>
+                <p>Welcome to South Waves Tech Services Private Limited ("South Waves," "we," "our," or "us"). By accessing or using our website, https://www.southwaves.in (the “Website”), you agree to comply with and be bound by these Terms and Conditions (“Terms”). Please read them carefully. If you do not agree to these Terms, you must not use our website. By using our site, you agree to use it for lawful purposes, respect our intellectual property, and comply with applicable laws. We own the site’s content, and you’re responsible for your actions while using it. Full details follow.</p>
                 
                 <h4>1. Acceptance of Terms</h4>
                 <p>By accessing or using this Website, you confirm that you are at least 18 years old or are accessing the Website under the supervision of a parent or legal guardian. Your continued use of the Website constitutes your acceptance of these Terms in full.</p>
@@ -607,8 +650,8 @@
             <div class="modal-content">
                 <h2>Privacy Policy</h2>
                 <p><strong>Effective Date: [Insert Date]</strong></p>
-                <p>At South Waves Tech Services ("South Waves," "we," "our," or "us"), your privacy is important to us. This Privacy Policy explains how we collect, use, store, and protect your information when you use our website, https://www.southwaves.com (the “Website”).</p>
-                <p>By using our Website, you consent to the practices described in this Privacy Policy.</p>
+                <p>We value your privacy and are transparent about how we collect, use, and protect your information. We may use third-party analytics tools (such as Google Analytics) to improve our site, and you can control cookies through your browser settings.</p>
+                <p>At South Waves Tech Services ("South Waves," "we," "our," or "us"), your privacy is important to us. This Privacy Policy explains how we collect, use, store, and protect your information when you use our website, https://www.southwaves.in (the “Website”). By using our Website, you consent to the practices described in this Privacy Policy.</p>
             
                 <h4>1. Information We Collect</h4>
                 <p><strong>a) Personal Information (provided by you):</strong></p>
@@ -632,37 +675,37 @@
                 <h4>2. How We Use Your Information</h4>
                 <p>We use your information to:</p>
                 <ul>
-                    <li>Respond to your inquiries and service requests</li>
-                    <li>Improve Website content, performance, and user experience</li>
-                    <li>Send relevant updates, newsletters, and marketing content (with your consent)</li>
-                    <li>Ensure the security and integrity of the Website</li>
-                    <li>Comply with applicable legal requirements</li>
+                    <li>Respond to your inquiries and service requests.</li>
+                    <li>Improve Website content, performance, and user experience.</li>
+                    <li>Send relevant updates, newsletters, and marketing content (with your consent).</li>
+                    <li>Ensure the security and integrity of the Website.</li>
+                    <li>Comply with applicable legal requirements.</li>
                 </ul>
                 
                 <h4>3. Legal Basis for Processing (GDPR)</h4>
                 <p>For users in the EEA, we process personal data under the following legal bases:</p>
                 <ul>
-                    <li><strong>Consent</strong> – when you voluntarily provide data</li>
-                    <li><strong>Contract</strong> – when processing is necessary to fulfil a service</li>
-                    <li><strong>Legitimate Interests</strong> – to enhance business operations and security</li>
-                    <li><strong>Legal Obligation</strong> – to comply with applicable laws</li>
+                    <li><strong>Consent</strong> – when you voluntarily provide data.</li>
+                    <li><strong>Contract</strong> – when processing is necessary to fulfill a service.</li>
+                    <li><strong>Legitimate Interests</strong> – to enhance business operations and security.</li>
+                    <li><strong>Legal Obligation</strong> – to comply with applicable laws.</li>
                 </ul>
             
                 <h4>4. Cookies and Tracking</h4>
                 <p>We use cookies to:</p>
                 <ul>
-                    <li>Enable essential site functions</li>
-                    <li>Track site usage for analytics</li>
-                    <li>Improve content and navigation</li>
+                    <li>Enable essential site functions.</li>
+                    <li>Track site usage for analytics.</li>
+                    <li>Improve content and navigation.</li>
                 </ul>
                 <p>You can disable cookies in your browser settings, but some features may not function properly.</p>
             
                 <h4>5. Data Sharing</h4>
                 <p>We do not sell your personal information. We may share it with:</p>
                 <ul>
-                    <li><strong>Service Providers</strong> – for hosting, analytics, or customer support</li>
-                    <li><strong>Legal Authorities</strong> – when required by law</li>
-                    <li><strong>Business Transfers</strong> – in case of a merger or acquisition</li>
+                    <li><strong>Service Providers</strong> – for hosting, analytics, or customer support.</li>
+                    <li><strong>Legal Authorities</strong> – when required by law.</li>
+                    <li><strong>Business Transfers</strong> – in case of a merger or acquisition.</li>
                 </ul>
             
                 <h4>6. Data Retention</h4>
@@ -674,12 +717,12 @@
                 <h4>8. Your Rights</h4>
                 <p>Depending on your location, you may request to:</p>
                 <ul>
-                    <li>Access your personal data</li>
-                    <li>Correct inaccurate data</li>
-                    <li>Delete your data</li>
-                    <li>Restrict processing</li>
-                    <li>Withdraw consent</li>
-                    <li>Request data portability</li>
+                    <li>Access your personal data.</li>
+                    <li>Correct inaccurate data.</li>
+                    <li>Delete your data.</li>
+                    <li>Restrict processing.</li>
+                    <li>Withdraw consent.</li>
+                    <li>Request data portability.</li>
                 </ul>
                 <p>Requests can be sent to info@southwaves.in.</p>
                 
@@ -765,30 +808,22 @@
             }, { threshold: 0.5 });
             counters.forEach(counter => counterObserver.observe(counter));
             
-            // --- NEW 'View Open Positions' Button Functionality ---
+            // --- 'View Open Positions' Button Functionality ---
             const viewPositionsBtn = document.getElementById('view-positions-btn');
             if (viewPositionsBtn) {
                 viewPositionsBtn.addEventListener('click', (e) => {
                     e.preventDefault(); 
                     
-                    // Check if the message already exists to avoid duplicates
-                    if (document.getElementById('no-openings-msg')) {
-                        return;
-                    }
+                    if (document.getElementById('no-openings-msg')) return;
 
-                    // Create the message element
                     const noOpeningsMessage = document.createElement('p');
                     noOpeningsMessage.id = 'no-openings-msg';
                     noOpeningsMessage.className = 'no-openings-message';
-                    noOpeningsMessage.textContent = 'Currently, there are no open positions. Please Revisit later.';
+                    noOpeningsMessage.textContent = 'Currently, there are no open positions. Please check back later.';
 
-                    // Insert the message after the button and fade it in
                     viewPositionsBtn.after(noOpeningsMessage);
-                    setTimeout(() => {
-                        noOpeningsMessage.style.opacity = '1';
-                    }, 10); 
+                    setTimeout(() => { noOpeningsMessage.style.opacity = '1'; }, 10); 
                     
-                    // Disable the button to prevent more clicks
                     viewPositionsBtn.disabled = true;
                 });
             }
@@ -808,13 +843,6 @@
                 });
             });
 
-            // --- Contact Form ---
-            // document.getElementById('contact-form').addEventListener('submit', (e) => {
-            //     e.preventDefault(); 
-            //     alert('Thank you for your message! We will be in touch soon.');
-            //     e.target.reset();
-            // });
-
             // --- Current Year in Footer ---
             document.getElementById('current-year').textContent = new Date().getFullYear();
         });
@@ -825,7 +853,7 @@
     var form = document.getElementById("contact-form");
     
     async function handleSubmit(event) {
-      event.preventDefault(); // Stop the default form submission
+      event.preventDefault();
       var status = document.getElementById("form-status");
       var data = new FormData(event.target);
       
@@ -833,28 +861,23 @@
         const response = await fetch(event.target.action, {
           method: form.method,
           body: data,
-          headers: {
-              'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' }
         });
 
         if (response.ok) {
-          // Success!
           status.innerHTML = "Thanks for your submission!";
-          status.style.color = "#28a745"; // Green for success
-          form.reset(); // Clear the form
+          status.style.color = "#28a745";
+          form.reset();
         } else {
-          // Error handling
           const responseData = await response.json();
           if (Object.hasOwn(responseData, 'errors')) {
             status.innerHTML = responseData["errors"].map(error => error["message"]).join(", ");
           } else {
             status.innerHTML = "Oops! There was a problem submitting your form.";
           }
-          status.style.color = "#dc3545"; // Red for error
+          status.style.color = "#dc3545";
         }
       } catch (error) {
-        // Network or other errors
         status.innerHTML = "Oops! There was a problem submitting your form.";
         status.style.color = "#dc3545";
       }
