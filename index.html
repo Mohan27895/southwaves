@@ -87,7 +87,7 @@
 
         h4 { font-size: 1.2rem; font-weight: 500; }
         
-        p { margin-bottom: 1.5rem; max-width: 52ch; }
+        p { margin-bottom: 1.5rem; max-width: 80ch; }
         .section-intro { max-width: 122ch; margin: 0 auto 3rem auto; text-align: center; }
         
         a { text-decoration: none; color: var(--secondary-color); font-weight: 500; }
@@ -188,7 +188,22 @@
             padding-left: 1.5rem;
         }
 
+        .result .tagline {
+            font-size: 1.4rem;
+            font-weight: 300;
+            max-width: none;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 1.5rem;
+            text-align: left;
+        }
+
         .hero-text-content p {
+            max-width: 65ch;
+            line-height: 1.7;
+        }
+
+        .result p {
             max-width: 65ch;
             line-height: 1.7;
         }
@@ -436,12 +451,20 @@
             .hero-text-content {
                 padding: 1rem;
             }
+            .result {
+                padding: 1rem;
+            }
             .hero-text-content .tagline {
                 border-left: none;
                 padding-left: 0;
             }
             .hero-image-side {
                 display: none;
+            }
+            
+            .result .tagline {
+                border-left: none;
+                padding-left: 0;
             }
         }
         @media(max-width: 768px) {
@@ -608,9 +631,10 @@
             </div>
 
             <!-- ROW 3: THE RESULT - Unchanged -->
-            <div style="text-align: center; margin-top: 4rem;">
-                <p style="color: var(--accent-color-light); max-width: 123ch; margin-left: auto; margin-right: auto; font-size: 1.1rem;">
-                    <strong>The Result:</strong> Working with South Waves means achieving the right balance between innovation and budget control—empowering insurers to modernize with confidence, accelerate time-to-value, and drive measurable business impact.
+            <div class="result" style="text-align: center; margin-top: 4rem;">
+                
+                <p class="tagline" >
+                    Working with South Waves means achieving the right balance between innovation and budget control—empowering insurers to modernize with confidence, accelerate time-to-value, and drive measurable business impact.
                 </p>
             </div>
             
@@ -655,7 +679,7 @@
     <div class="container">
 
         <!-- Part 1: New Header & Introduction, styled after your image -->
-        <div class="header-and-intro-wrapper" style="text-align: center; max-width: 80ch; margin: 0 auto 4rem auto;">
+        <div class="header-and-intro-wrapper" style="text-align: center; max-width: 125ch; margin: 0 auto 4rem auto;">
 
             <!-- Header block exactly like your screenshot -->
             <div class="section-header" style="margin-bottom: 2rem;">
@@ -668,23 +692,22 @@
 
             <!-- Simple, clean paragraphs -->
             <p class="section-intro">
-                While our core expertise lies in insurance and finance, our deep technical capabilities allow us to build and integrate custom solutions on a wide range of platforms. We blend proven frameworks with the latest innovations to help you stay ahead in a competitive market.
-            </p>
+While our core expertise lies in insurance and finance, our deep technical capabilities allow us to build and integrate custom solutions on a wide range of platforms. We blend proven frameworks with the latest innovations to help you stay ahead in a competitive market.
+Our approach is flexible, enabling us to handle a wide range of high-impact projects. From building robust enterprise applications to agile, cloud-native solutions, we work with technologies like React, Java, .NET, SAP®, and Salesforce® to extend the capabilities of your core systems and enhance your business operations.            </p>
             <!-- <p class="section-intro">
                 Our approach is flexible, enabling us to handle a wide range of high-impact projects. We work with technologies like React, Java, .NET, SAP®, and Salesforce® to extend the capabilities of your core systems and enhance your business operations.
             </p> -->
             
         </div>
-        <div class="tech-stack-highlight" style="background: var(--white-color); padding: 2rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.07); position: relative; overflow: hidden;">
+        <!-- <div class="tech-stack-highlight" style="background: var(--white-color); padding: 2rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.07); position: relative; overflow: hidden;">
                     <h4 style="margin-top: 0; color: var(--primary-color);">Key Technologies</h4>
                     <ul style="margin: 0; padding: 0; list-style: none; z-index: 2; position: relative;">
                         <li style="margin-bottom: 0.75rem; font-weight: 500; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Robust enterprise applications</li>
                         <li style="margin-bottom: 0.75rem; font-weight: 500; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Agile, cloud-native solutions</li>
                         <li style="font-weight: 500; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Integrations with React, Java, .NET, SAP®, and Salesforce®</li>
                     </ul>
-                    <!-- Subtle Decorative Background Element -->
                     <i class="fas fa-cogs" style="position: absolute; right: -20px; bottom: -20px; font-size: 120px; color: var(--accent-color-dark); opacity: 0.5; z-index: 1; transform: rotate(15deg);"></i>
-                </div>
+                </div> -->
 
         <!-- Part 2: "Additional Capabilities" Title and Your Original Card Grid -->
         <div class="additional-capabilities-wrapper">
