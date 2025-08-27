@@ -213,10 +213,7 @@
         .modal-content ul li { margin-bottom: 0.5rem; }
 
         /* --- Responsive Design --- */
-        /* --- CORRECTED BREAKPOINT ---
-         * Lowered from 992px to 900px so Chrome’s “Desktop site” mode (~980px) keeps the desktop layout.
-        */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             h1 { font-size: 3.2rem; }
             h2 { font-size: 2.4rem; }
             
@@ -252,7 +249,7 @@
             .services-intro-block, .services-overview { padding: 60px 0; }
             .container { padding: 0 1rem; }
 
-            /* override inline logo height to avoid nav misalignment on small screens */
+            /* Let the stylesheet control logo size, not inline styles */
             .navbar-brand img { height: 40px !important; }
 
             .nav-links {
@@ -285,11 +282,9 @@
 
     <header id="main-header" class="navbar">
         <div class="container">
-            <!-- <a href="#home" class="navbar-brand">South Waves</a> -->
-
             <a href="#home" class="navbar-brand">
-                <!-- LOGO IMAGE BELOW -->
-                <img src="asset/southwaveslogo.png" alt="South Waves Logo" style="height: 70px; width: auto;">
+                <!-- LOGO IMAGE BELOW - INLINE STYLE REMOVED -->
+                <img src="asset/southwaveslogo.png" alt="South Waves Logo">
             </a>
             <nav>
                  <ul class="nav-links">
@@ -307,9 +302,6 @@
 
     <main>
         <!-- (content unchanged) -->
-        <!-- HOME, ABOUT, SERVICES, OTHER SERVICES, CAREERS ... exactly as you provided -->
-        <!-- I’m keeping your original HTML content below verbatim -->
-        <!-- START original content -->
         <section id="home" class="split-hero">
             <div class="container hero-container">
                 <div class="hero-text-content">
@@ -511,7 +503,7 @@ Our approach is flexible, enabling us to handle a wide range of high-impact proj
                 </div>
             </div>
         </section>
-        <!-- END original content -->
+        <!-- (content unchanged) -->
     </main>
     
     <footer id="contact">
