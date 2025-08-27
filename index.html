@@ -213,6 +213,12 @@
         .modal-content ul li { margin-bottom: 0.5rem; }
 
         /* --- Responsive Design --- */
+        @media (max-width: 980px) and (min-width: 769px) {
+            .nav-links li a {
+                padding: 10px 12px; /* Reduce horizontal padding for smaller desktop views */
+            }
+        }
+
         @media (max-width: 900px) {
             h1 { font-size: 3.2rem; }
             h2 { font-size: 2.4rem; }
@@ -282,9 +288,11 @@
 
     <header id="main-header" class="navbar">
         <div class="container">
+            <!-- <a href="#home" class="navbar-brand">South Waves</a> -->
+
             <a href="#home" class="navbar-brand">
-                <!-- LOGO IMAGE BELOW - INLINE STYLE REMOVED -->
-                <img src="asset/southwaveslogo.png" alt="South Waves Logo">
+                <!-- LOGO IMAGE BELOW -->
+                <img src="asset/southwaveslogo.png" alt="South Waves Logo" style="height: 70px; width: auto;">
             </a>
             <nav>
                  <ul class="nav-links">
@@ -302,6 +310,9 @@
 
     <main>
         <!-- (content unchanged) -->
+        <!-- HOME, ABOUT, SERVICES, OTHER SERVICES, CAREERS ... exactly as you provided -->
+        <!-- I’m keeping your original HTML content below verbatim -->
+        <!-- START original content -->
         <section id="home" class="split-hero">
             <div class="container hero-container">
                 <div class="hero-text-content">
@@ -503,7 +514,7 @@ Our approach is flexible, enabling us to handle a wide range of high-impact proj
                 </div>
             </div>
         </section>
-        <!-- (content unchanged) -->
+        <!-- END original content -->
     </main>
     
     <footer id="contact">
