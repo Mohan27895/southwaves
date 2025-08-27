@@ -172,7 +172,7 @@
         }
 
         .hero-text-content {
-            flex: 0 0 55%; 
+            flex: 0 0 60%; /* MODIFIED: Increased width for better text flow */
             color: var(--white-color);
             padding: 2rem 3rem 2rem 0;
             text-align: left;
@@ -220,7 +220,7 @@
         }
 
         .hero-image-side {
-            flex: 0 0 45%;
+            flex: 0 0 40%; /* MODIFIED: Decreased width to accommodate text */
         }
         
         /* --- About Us Section --- */
@@ -452,20 +452,24 @@
                 margin-right: auto;
             }
 
+            /* CORRECTED HERO SECTION FOR MOBILE/TABLET */
             #home.split-hero {
                 min-height: 80vh;
-                background-image: linear-gradient(rgba(13, 44, 84, 0.9), rgba(13, 44, 84, 0.9)), url(https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=2832);
+                background-image: linear-gradient(rgba(13, 44, 84, 0.95), rgba(13, 44, 84, 0.95)), url(https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=2832);
                 text-align: center;
-                padding: 80px 0;
+                padding: 80px 1rem; /* Added horizontal padding */
+                justify-content: center; /* Ensures content is horizontally centered */
             }
             .hero-container {
                 flex-direction: column;
                 justify-content: center;
+                align-items: center; /* Ensures text block is centered */
             }
             .hero-text-content {
-                padding: 1rem;
+                padding: 1rem 0; /* Adjusted padding */
                 text-align: center;
                 flex-basis: auto;
+                width: 100%;
             }
             .result {
                 padding: 1rem;
