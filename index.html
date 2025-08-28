@@ -214,8 +214,14 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 980px) and (min-width: 769px) {
+            /* Add this rule to make the logo slightly smaller, creating more space */
+            .navbar-brand img {
+                height: 55px !important; /* Overrides the inline style */
+            }
+
             .nav-links li a {
-                padding: 10px 12px; /* Reduce horizontal padding for smaller desktop views */
+                 /* Further reduce horizontal padding for this specific view */
+                padding: 10px 10px;
             }
         }
 
